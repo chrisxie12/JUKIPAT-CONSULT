@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="overflow-x-hidden scroll-smooth">
 
 <!-- COMPONENT: HEAD -->
 <head>
@@ -200,7 +200,7 @@
         }
 
         /* ── Smooth Scroll ── */
-        html { scroll-behavior: smooth; }
+        html { scroll-behavior: smooth; overflow-x: hidden; }
 
         /* ── Section Divider ── */
         .section-badge {
@@ -297,7 +297,7 @@
                 <span class="block w-6 h-0.5 bg-primary transition-opacity duration-300" :class="{ 'opacity-0': mobileOpen }"></span>
                 <span class="block w-6 h-0.5 bg-primary transition-transform duration-300" :class="{ '-rotate-45 -translate-y-1.5': mobileOpen }"></span>
             </button>
-            <div>
+            <div class="hidden md:block">
                 <a href="#quote"
                     class="bg-primary hover:bg-darkAccent text-white text-sm font-semibold px-6 py-3 rounded-full transition-all duration-300 shadow-md hover:shadow-lg hover:shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] btn-shimmer">Get
                     A Free Quote</a>
@@ -307,21 +307,54 @@
     <!-- END COMPONENT: NAV -->
 
     <!-- COMPONENT: MOBILE_MENU -->
-    <div class="fixed inset-0 bg-white/90 backdrop-blur-xl z-40 md:hidden transition-all duration-400" :class="{ 'translate-x-0': mobileOpen, 'translate-x-full': !mobileOpen }">
-        <div class="flex flex-col items-center justify-center h-full space-y-8 text-lg font-medium">
-            <a href="#home" @click="mobileOpen = false" class="text-primary font-bold border-b-2 border-accent pb-1 hover:scale-110 transition-all duration-300">Home</a>
-            <a href="#about" @click="mobileOpen = false" class="text-gray-700 hover:text-primary hover:scale-110 transition-all duration-300">About Us</a>
-            <a href="#services" @click="mobileOpen = false" class="text-gray-700 hover:text-primary hover:scale-110 transition-all duration-300">Services</a>
-            <a href="#process" @click="mobileOpen = false" class="text-gray-700 hover:text-primary hover:scale-110 transition-all duration-300">Process</a>
-            <a href="#quote" @click="mobileOpen = false" class="bg-primary text-white font-semibold px-8 py-3.5 rounded-full text-sm hover:shadow-lg hover:shadow-primary/20 hover:scale-105 active:scale-95 transition-all duration-300">Get A Free Quote</a>
+    <div x-cloak
+         class="fixed top-20 inset-x-0 bottom-0 bg-primary z-[55] md:hidden overflow-y-auto"
+         style="transition: transform 0.32s cubic-bezier(0.4, 0, 0.2, 1);"
+         :class="mobileOpen ? 'translate-x-0' : 'translate-x-full'">
+        <div class="flex flex-col h-full px-6 pt-8 pb-10">
+            <!-- Nav links -->
+            <nav class="flex-1 space-y-1">
+                <a href="#home" @click="mobileOpen = false"
+                   class="flex items-center justify-between text-white text-xl font-bold py-5 border-b border-white/10 hover:text-accent transition-colors duration-200">
+                    Home <svg class="w-5 h-5 text-accent/70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                </a>
+                <a href="#about" @click="mobileOpen = false"
+                   class="flex items-center justify-between text-white/80 text-xl font-bold py-5 border-b border-white/10 hover:text-accent transition-colors duration-200">
+                    About Us <svg class="w-5 h-5 text-accent/50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                </a>
+                <a href="#services" @click="mobileOpen = false"
+                   class="flex items-center justify-between text-white/80 text-xl font-bold py-5 border-b border-white/10 hover:text-accent transition-colors duration-200">
+                    Services <svg class="w-5 h-5 text-accent/50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                </a>
+                <a href="#process" @click="mobileOpen = false"
+                   class="flex items-center justify-between text-white/80 text-xl font-bold py-5 border-b border-white/10 hover:text-accent transition-colors duration-200">
+                    Our Process <svg class="w-5 h-5 text-accent/50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                </a>
+                <a href="#quote" @click="mobileOpen = false"
+                   class="flex items-center justify-between text-white/80 text-xl font-bold py-5 border-b border-white/10 hover:text-accent transition-colors duration-200">
+                    Contact <svg class="w-5 h-5 text-accent/50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                </a>
+            </nav>
+            <!-- CTAs -->
+            <div class="pt-8 space-y-3">
+                <a href="#quote" @click="mobileOpen = false"
+                   class="block w-full text-center bg-accent text-primary font-black text-base py-4 rounded-2xl transition-all duration-200 active:scale-95 btn-shimmer">
+                    Get A Free Quote
+                </a>
+                <a href="tel:+233244110005"
+                   class="flex items-center justify-center gap-2 w-full text-center bg-white/10 text-white font-semibold text-sm py-4 rounded-2xl border border-white/15 transition-all duration-200 active:scale-95">
+                    <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.72l.54 2.22a1 1 0 01-.25.96l-1.3 1.3a13.042 13.042 0 005.516 5.516l1.3-1.3a1 1 0 01.96-.25l2.22.54a1 1 0 01.72.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                    +233 (0) 244 110 005
+                </a>
+            </div>
         </div>
     </div>
     <!-- END COMPONENT: MOBILE_MENU -->
 
     <!-- COMPONENT: HERO -->
-    <section id="home" class="relative bg-lightBg py-16 lg:py-24 overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            <div class="lg:col-span-7 space-y-6">
+    <section id="home" class="relative bg-lightBg py-12 lg:py-24 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            <div class="lg:col-span-7 space-y-5 sm:space-y-6">
                 <div class="section-badge fade-up">
                     <div class="w-2 h-2 rounded-full bg-accent animate-pulse"></div>
                     <span>Ghana's Trusted Financial Advisors Since 2008</span>
@@ -347,7 +380,32 @@
                 </div>
             </div>
 
-            <div class="lg:col-span-5 relative flex justify-center">
+            <!-- Mobile hero visual (shows below lg) -->
+            <div class="lg:hidden w-full">
+                <div class="relative rounded-3xl overflow-hidden shadow-xl">
+                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80&w=800"
+                         class="w-full h-56 sm:h-72 object-cover"
+                         alt="Jukipat Consult financial professionals at work">
+                    <div class="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent"></div>
+                    <div class="absolute bottom-4 left-4 right-4 flex gap-3">
+                        <div class="bg-white/15 backdrop-blur-sm rounded-xl px-4 py-2 text-white text-center flex-1 border border-white/20">
+                            <p class="text-lg font-black text-accent">350+</p>
+                            <p class="text-[10px] font-semibold uppercase tracking-wider">Clients</p>
+                        </div>
+                        <div class="bg-white/15 backdrop-blur-sm rounded-xl px-4 py-2 text-white text-center flex-1 border border-white/20">
+                            <p class="text-lg font-black text-accent">16+</p>
+                            <p class="text-[10px] font-semibold uppercase tracking-wider">Years</p>
+                        </div>
+                        <div class="bg-white/15 backdrop-blur-sm rounded-xl px-4 py-2 text-white text-center flex-1 border border-white/20">
+                            <p class="text-lg font-black text-accent">4.9★</p>
+                            <p class="text-[10px] font-semibold uppercase tracking-wider">Rating</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Desktop hero visual (shows from lg) -->
+            <div class="hidden lg:flex lg:col-span-5 relative justify-center">
                 <div class="relative w-full max-w-md">
                     <div class="absolute -top-8 -left-8 w-32 h-32 bg-accent/10 rounded-full blur-2xl"></div>
                     <div class="absolute -bottom-8 -right-8 w-40 h-40 bg-emerald-800/10 rounded-full blur-2xl"></div>
@@ -400,7 +458,7 @@
     <!-- END COMPONENT: MARQUEE -->
 
     <!-- COMPONENT: ABOUT -->
-    <section id="about" class="py-20 sm:py-28 bg-white relative overflow-hidden">
+    <section id="about" class="py-14 sm:py-20 lg:py-28 bg-white relative overflow-hidden">
         <div class="absolute inset-0 pointer-events-none">
             <div class="absolute -top-40 -right-40 w-80 h-80 bg-accent/5 rounded-full blur-3xl"></div>
             <div class="absolute -bottom-40 -left-40 w-96 h-96 bg-emerald-800/5 rounded-full blur-3xl"></div>
@@ -411,13 +469,13 @@
                     <div class="absolute -inset-4 bg-gradient-to-br from-accent/20 to-emerald-800/10 rounded-[40px] blur-2xl"></div>
                     <div class="relative overflow-hidden rounded-[28px] shadow-xl bg-white/40 backdrop-blur-sm border border-white/20">
                         <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80&w=500"
-                            class="w-full h-72 sm:h-80 object-cover grayscale hover:grayscale-0 transition-all duration-700 ease-out hover:scale-105"
+                            class="w-full h-44 sm:h-64 lg:h-80 object-cover grayscale hover:grayscale-0 transition-all duration-700 ease-out hover:scale-105"
                             alt="Corporate desk">
                         <div class="absolute inset-0 bg-gradient-to-t from-emerald-950/20 to-transparent pointer-events-none"></div>
                     </div>
-                    <div class="relative overflow-hidden rounded-[28px] shadow-xl bg-white/40 backdrop-blur-sm border border-white/20 mt-8 sm:mt-12">
+                    <div class="relative overflow-hidden rounded-[28px] shadow-xl bg-white/40 backdrop-blur-sm border border-white/20 sm:mt-12">
                         <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=500"
-                            class="w-full h-72 sm:h-80 object-cover grayscale hover:grayscale-0 transition-all duration-700 ease-out hover:scale-105"
+                            class="w-full h-44 sm:h-64 lg:h-80 object-cover grayscale hover:grayscale-0 transition-all duration-700 ease-out hover:scale-105"
                             alt="Team strategy">
                         <div class="absolute inset-0 bg-gradient-to-t from-emerald-950/20 to-transparent pointer-events-none"></div>
                     </div>
@@ -665,7 +723,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div class="bg-lightBg rounded-3xl p-6 space-y-4 relative group overflow-hidden hover-glow hover:border-accent/10 border border-transparent">
                     <img src="https://images.unsplash.com/photo-1542744094-3a31f103e35f?auto=format&fit=crop&q=80&w=600"
-                        class="w-full h-64 object-cover rounded-2xl grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500"
+                        class="w-full h-48 sm:h-64 object-cover rounded-2xl grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500"
                         alt="SME Tax strategy">
                     <div class="flex justify-between items-center">
                         <div>
@@ -680,7 +738,7 @@
                 </div>
                 <div class="bg-lightBg rounded-3xl p-6 space-y-4 relative group overflow-hidden hover-glow hover:border-accent/10 border border-transparent">
                     <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&q=80&w=600"
-                        class="w-full h-64 object-cover rounded-2xl grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500"
+                        class="w-full h-48 sm:h-64 object-cover rounded-2xl grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500"
                         alt="Corporate Onboarding">
                     <div class="flex justify-between items-center">
                         <div>
@@ -701,7 +759,7 @@
     <section id="quote" class="py-20 bg-lightBg">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div
-                class="bg-white/70 backdrop-blur-xl rounded-[40px] shadow-xl overflow-hidden grid grid-cols-1 lg:grid-cols-12 gap-12 p-8 sm:p-12 items-center border border-white/50">
+                class="bg-white/70 backdrop-blur-xl rounded-3xl lg:rounded-[40px] shadow-xl overflow-hidden grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 p-5 sm:p-8 lg:p-12 items-center border border-white/50">
                 <div class="lg:col-span-7 space-y-6">
                     <div class="space-y-2">
                         <span class="text-xs font-bold text-emerald-800 uppercase tracking-widest block">✦ Contact
@@ -794,7 +852,7 @@
                         </div>
                         <div class="sm:col-span-2 pt-2">
                             <button type="submit"
-                                class="bg-primary hover:bg-darkAccent text-accent font-bold px-8 py-4 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] btn-shimmer">Send
+                                class="w-full sm:w-auto bg-primary hover:bg-darkAccent text-accent font-bold px-8 py-4 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] btn-shimmer">Send
                                 Message</button>
                         </div>
 
@@ -994,8 +1052,7 @@
                     <img src="logo.png" alt="Jukipat Consult" class="h-16 w-auto object-contain bg-white rounded-xl p-2 shadow-md">
                 </div>
                 <p class="text-gray-400 text-xs leading-relaxed max-w-sm">
-                    High-performance financial architecture, corporate tax planning, and strategic enterprise
-                    operational registration across regional metrics.
+                    Expert accounting, tax services, and business registration for businesses across Ghana. Trusted by 350+ clients since 2008.
                 </p>
             </div>
 

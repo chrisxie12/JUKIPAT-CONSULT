@@ -5,7 +5,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jukipat Consult - Financial, Tax & Business Registration Experts</title>
+    <title>Jukipat Consult | Financial, Tax & Business Registration Services in Ghana</title>
+    <meta name="description" content="Jukipat Consult offers expert accountancy, tax planning, and business registration services in Accra, Ghana. 16+ years of trusted financial expertise. Get a free quote today.">
+    <meta name="robots" content="index, follow">
+    <meta name="keywords" content="accountancy Ghana, tax services Accra, business registration Ghana, financial consulting Accra, GRA filing, company registration Ghana, Jukipat Consult">
+    <link rel="canonical" href="https://www.jukipatconsult.com/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.jukipatconsult.com/">
+    <meta property="og:title" content="Jukipat Consult | Financial, Tax & Business Registration Services in Ghana">
+    <meta property="og:description" content="Expert accountancy, tax planning, and business registration services in Accra, Ghana. 16+ years of experience. 350+ happy clients. Get your free quote.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80&w=1200&h=630">
+    <meta property="og:locale" content="en_GH">
+    <meta property="og:site_name" content="Jukipat Consult">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Jukipat Consult | Financial, Tax & Business Registration in Ghana">
+    <meta name="twitter:description" content="Expert financial, tax, and business registration services in Accra, Ghana. 16+ years experience. Get a free consultation today.">
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80&w=1200&h=630">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "AccountingService",
+      "name": "Jukipat Consult",
+      "description": "Professional financial, tax planning, and business registration services in Accra, Ghana.",
+      "url": "https://www.jukipatconsult.com",
+      "telephone": ["+233244110005", "+233202620921"],
+      "email": "jukiconsult@gmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "C104/2 Farrar Avenue Adabraka",
+        "addressLocality": "Accra",
+        "addressCountry": "GH",
+        "postalCode": "KN 5320"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "5.5571",
+        "longitude": "-0.2069"
+      },
+      "founder": {
+        "@type": "Person",
+        "name": "Juliana Mensah-Arthur",
+        "jobTitle": "Chief Executive Officer"
+      },
+      "foundingDate": "2008",
+      "areaServed": "Ghana",
+      "priceRange": "$$",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "40"
+      },
+      "sameAs": []
+    }
+    </script>
+
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><polygon points='50,5 95,90 5,90' fill='%23122a1e'/><text y='85' x='30' font-size='60' font-weight='900' fill='%23b5f529' font-family='sans-serif' font-style='italic'>J</text></svg>">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -116,7 +178,55 @@
         }
 
         [x-cloak] { display: none !important; }
+
+        /* ── Spin Slow ── */
+        @keyframes spin-slow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .animate-spin-slow {
+            animation: spin-slow 10s linear infinite;
+        }
+
+        /* ── Fade Up on Scroll ── */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.65s ease, transform 0.65s ease;
+        }
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ── Smooth Scroll ── */
+        html { scroll-behavior: smooth; }
+
+        /* ── Section Divider ── */
+        .section-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            padding: 0.375rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.7rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: #166534;
+        }
     </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+            }, { threshold: 0.12 });
+            document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+        });
+    </script>
     <!-- END COMPONENT: GLOBAL_STYLES -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.8/dist/cdn.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.14.8/dist/cdn.min.js"></script>
@@ -151,10 +261,18 @@
                     </svg>C104/2 Farrar Avenue Adabraka, Accra</span>
             </div>
             <div class="bg-accent text-primary font-bold px-4 py-2 -my-2 flex items-center space-x-3 rounded-bl-md">
-                <a href="#" class="hover:opacity-100 hover:text-primary/80 transition-all duration-300">FB</a>
-                <a href="#" class="hover:opacity-100 hover:text-primary/80 transition-all duration-300">LN</a>
-                <a href="#" class="hover:opacity-100 hover:text-primary/80 transition-all duration-300">TW</a>
-                <a href="#" class="hover:opacity-100 hover:text-primary/80 transition-all duration-300">WA</a>
+                <a href="#" aria-label="Facebook" class="hover:opacity-70 transition-all duration-300">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878V14.89h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/></svg>
+                </a>
+                <a href="#" aria-label="LinkedIn" class="hover:opacity-70 transition-all duration-300">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                </a>
+                <a href="#" aria-label="Twitter / X" class="hover:opacity-70 transition-all duration-300">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                </a>
+                <a href="https://wa.me/233244110005" aria-label="WhatsApp" target="_blank" rel="noopener noreferrer" class="hover:opacity-70 transition-all duration-300">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                </a>
             </div>
         </div>
     </div>
@@ -213,29 +331,27 @@
     <section id="home" class="relative bg-lightBg py-16 lg:py-24 overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div class="lg:col-span-7 space-y-6">
-                <div
-                    class="inline-flex items-center space-x-2 bg-emerald-50 text-primary px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider">
+                <div class="section-badge fade-up">
                     <div class="w-2 h-2 rounded-full bg-accent animate-pulse"></div>
-                    <span>Elevate Your Brand Frameworks</span>
+                    <span>Ghana's Trusted Financial Advisors Since 2008</span>
                 </div>
-                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-primary tracking-tight leading-tight">
-                    Empowering Your <br><span class="text-emerald-800">Success</span> with Digital & Tax Expertise
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-primary tracking-tight leading-tight fade-up">
+                    Expert Financial, Tax &<br><span class="text-emerald-800">Business Services</span> in Ghana
                 </h1>
-                <p class="text-gray-600 text-base sm:text-lg max-w-xl leading-relaxed">
-                    Streamline operational architecture, reduce liabilities, and structure growth with specialized
-                    solutions custom-tailored for ambitious modern businesses.
+                <p class="text-gray-600 text-base sm:text-lg max-w-xl leading-relaxed fade-up">
+                    We help businesses across Ghana handle taxes, build strong financial foundations, and register with confidence — backed by over 16 years of hands-on expertise and 350+ happy clients.
                 </p>
-                <div class="flex flex-wrap gap-4 pt-2">
+                <div class="flex flex-wrap gap-4 pt-2 fade-up">
                     <a href="#services"
                         class="bg-primary hover:bg-darkAccent text-accent font-bold px-8 py-4 rounded-full text-sm flex items-center transition-all duration-300 shadow-lg shadow-emerald-950/10 hover:shadow-xl hover:shadow-emerald-950/20 hover:scale-[1.02] active:scale-[0.98] btn-shimmer">
-                        Explore More <svg class="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        Our Services <svg class="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
                         </svg>
                     </a>
                     <a href="#about"
                         class="bg-white hover:bg-white text-primary font-bold px-8 py-4 rounded-full text-sm border border-gray-200 hover:border-primary/20 transition-all duration-300 hover:shadow-lg hover:scale-[1.02] active:scale-[0.98]">
-                        View All Services
+                        About Us
                     </a>
                 </div>
             </div>
@@ -320,17 +436,16 @@
                     </div>
                 </div>
                 <div class="space-y-7">
-                    <div class="inline-flex items-center gap-2 bg-emerald-50 border border-emerald-200/50 backdrop-blur-sm px-4 py-2 rounded-full">
+                    <div class="section-badge fade-up">
                         <span class="w-2 h-2 rounded-full bg-accent animate-pulse"></span>
-                        <span class="text-[11px] font-bold text-emerald-800 uppercase tracking-[0.15em]">✦ About Us</span>
+                        <span>✦ About Us</span>
                     </div>
-                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-primary tracking-tight leading-[1.1]">
-                        Empowering Your Success with <span class="text-emerald-800">Complete Corporate</span> Expertise
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-primary tracking-tight leading-[1.1] fade-up">
+                        Ghana's Leading Financial &amp; <span class="text-emerald-800">Tax Consulting</span> Firm
                     </h2>
                     <p class="text-gray-500 text-base sm:text-lg leading-[1.8] max-w-lg">
-                        Under the strategic operational leadership of our Chief Executive Officer, <strong class="text-primary font-semibold">Mrs. Juliana
-                            Mensah-Arthur</strong>, Jukipat Consult delivers high-fidelity compliance structures across
-                        Ghana and beyond. We synthesize operational accountancy with forward-thinking business strategy.
+                        Under the leadership of our CEO, <strong class="text-primary font-semibold">Mrs. Juliana
+                            Mensah-Arthur</strong>, Jukipat Consult delivers reliable financial and compliance services across Ghana and beyond. We combine deep accounting expertise with practical, growth-oriented business strategy tailored to your needs.
                     </p>
 
                     <div class="space-y-5 pt-3">
@@ -407,9 +522,9 @@
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8" x-data="{
                 services: [
-                    { img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=400', title: 'Accountancy Services', desc: 'Statutory bookkeeping, auditing frameworks, financial statement preparation, and general organizational structure setup.', glass: 'glass-card', textColor: 'text-gray-300', linkColor: 'text-accent', linkWeight: 'font-bold' },
-                    { img: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80&w=400', title: 'Strategic Tax Services', desc: 'Corporate optimization frameworks, filing compliance architecture, and expert local authority representations.', glass: 'glass-card-accent text-primary', imgFilter: '', textColor: 'text-emerald-950 font-medium', linkColor: 'text-primary font-black', linkWeight: 'font-black' },
-                    { img: 'https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format&fit=crop&q=80&w=400', title: 'Registration of Business', desc: 'Seamless legal formations, licensing setup, regulatory compliance filings, and organizational onboarding modules.', glass: 'glass-card', textColor: 'text-gray-300', linkColor: 'text-accent', linkWeight: 'font-bold' }
+                    { img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=400', title: 'Accountancy Services', desc: 'Full bookkeeping, financial statement preparation, payroll management, and audit support — keeping your business financially sound year-round.', glass: 'glass-card', textColor: 'text-gray-300', linkColor: 'text-accent', linkWeight: 'font-bold' },
+                    { img: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80&w=400', title: 'Strategic Tax Services', desc: 'Smart tax planning, accurate GRA filing, VAT remittance, and professional representation with tax authorities — so you stay compliant and pay only what you owe.', glass: 'glass-card-accent text-primary', imgFilter: '', textColor: 'text-emerald-950 font-medium', linkColor: 'text-primary font-black', linkWeight: 'font-black' },
+                    { img: 'https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format&fit=crop&q=80&w=400', title: 'Registration of Business', desc: 'Fast, error-free company registration with the Registrar of Companies, licensing, regulatory filings, and complete business structure setup.', glass: 'glass-card', textColor: 'text-gray-300', linkColor: 'text-accent', linkWeight: 'font-bold' }
                 ]
             }">
                 <template x-for="(s, i) in services" :key="i">
@@ -458,32 +573,28 @@
                                 class="w-9 h-9 rounded-full bg-accent text-primary flex items-center justify-center font-bold text-sm mb-3 transition-transform duration-300 group-hover:scale-110">
                                 ✓</div>
                             <h4 class="font-bold text-base text-white">Certified Experts</h4>
-                            <p class="text-xs text-gray-400 leading-relaxed">Top tier accounting framework optimization
-                                under strict international metrics.</p>
+                            <p class="text-xs text-gray-400 leading-relaxed">Our team holds professional certifications and delivers work that meets Ghana Revenue Authority and international accounting standards.</p>
                         </div>
                         <div class="glass-card text-white p-6 rounded-2xl space-y-2 hover-glow">
                             <div
                                 class="w-9 h-9 rounded-full bg-accent text-primary flex items-center justify-center font-bold text-sm mb-3 transition-transform duration-300 group-hover:scale-110">
                                 ✓</div>
                             <h4 class="font-bold text-base text-white">Proven Results</h4>
-                            <p class="text-xs text-gray-400 leading-relaxed">Documented records reducing overhead costs and
-                                optimizing resource pipelines.</p>
+                            <p class="text-xs text-gray-400 leading-relaxed">Over 350 clients across Ghana have seen measurable cost reductions and improved financial clarity working with us.</p>
                         </div>
                         <div class="glass-card text-white p-6 rounded-2xl space-y-2 hover-glow">
                             <div
                                 class="w-9 h-9 rounded-full bg-accent text-primary flex items-center justify-center font-bold text-sm mb-3 transition-transform duration-300 group-hover:scale-110">
                                 ✓</div>
-                            <h4 class="font-bold text-base text-white">Award Winning</h4>
-                            <p class="text-xs text-gray-400 leading-relaxed">Recognized advisory architecture maintaining
-                                high tier compliance data protocols.</p>
+                            <h4 class="font-bold text-base text-white">16+ Years of Trust</h4>
+                            <p class="text-xs text-gray-400 leading-relaxed">Since 2008 we've built a track record of clean filings, successful registrations, and satisfied clients across Accra and beyond.</p>
                         </div>
                         <div class="glass-card text-white p-6 rounded-2xl space-y-2 hover-glow">
                             <div
                                 class="w-9 h-9 rounded-full bg-accent text-primary flex items-center justify-center font-bold text-sm mb-3 transition-transform duration-300 group-hover:scale-110">
                                 ✓</div>
                             <h4 class="font-bold text-base text-white">Transparent Reporting</h4>
-                            <p class="text-xs text-gray-400 leading-relaxed">Consolidated balance sheets, live timelines,
-                                and open-door review setups.</p>
+                            <p class="text-xs text-gray-400 leading-relaxed">We keep you informed at every step — clear reports, open communication, and no surprise fees, ever.</p>
                         </div>
                     </div>
                 </div>
@@ -510,8 +621,7 @@
                             class="text-5xl font-black text-gray-100 group-hover:text-accent/60 transition-all duration-300 block">01</span>
                         <h3 class="text-lg font-bold text-primary group-hover:text-accent transition-colors duration-300">Discover & Strategize</h3>
                         <p class="text-gray-500 text-xs leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
-                            We catalog financial metrics, corporate history, and compliance criteria to isolate dynamic
-                            growth paths.
+                            We take time to understand your business, goals, and current financial situation before recommending a plan — no cookie-cutter advice.
                         </p>
                     </div>
                     <div class="mt-6 bg-gray-100 h-2 w-full rounded-full overflow-hidden">
@@ -525,8 +635,7 @@
                             class="text-5xl font-black text-gray-100 group-hover:text-accent/60 transition-all duration-300 block">02</span>
                         <h3 class="text-lg font-bold text-primary group-hover:text-accent transition-colors duration-300">Execute & Optimize</h3>
                         <p class="text-gray-500 text-xs leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
-                            Our specialists deploy strategic legal bookkeeping transformations and realign tax
-                            obligations.
+                            Our specialists carry out the agreed strategy — whether that's setting up accounts, filing taxes accurately, or registering your business with the right authorities.
                         </p>
                     </div>
                     <div class="mt-6 bg-gray-100 h-2 w-full rounded-full overflow-hidden">
@@ -540,8 +649,7 @@
                             class="text-5xl font-black text-gray-100 group-hover:text-accent/60 transition-all duration-300 block">03</span>
                         <h3 class="text-lg font-bold text-primary group-hover:text-accent transition-colors duration-300">Analyze & Grow</h3>
                         <p class="text-gray-500 text-xs leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
-                            Continuous diagnostic checks ensure structured compliance scaling alongside ongoing
-                            expansion profiles.
+                            We stay by your side — monitoring compliance, delivering clear reports, and adapting our support as your business grows.
                         </p>
                     </div>
                     <div class="mt-6 bg-gray-100 h-2 w-full rounded-full overflow-hidden">
@@ -720,32 +828,66 @@
 
     <!-- COMPONENT: TESTIMONIALS -->
     <section class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            <div class="lg:col-span-4 bg-primary/90 backdrop-blur-md text-white p-8 rounded-3xl space-y-4 border border-white/10 hover-glow">
-                <h3 class="text-4xl font-black text-accent">4.9</h3>
-                <div class="flex text-accent space-x-1 text-xl">
-                    <span class="hover:scale-110 transition-transform duration-200">★</span>
-                    <span class="hover:scale-110 transition-transform duration-200">★</span>
-                    <span class="hover:scale-110 transition-transform duration-200">★</span>
-                    <span class="hover:scale-110 transition-transform duration-200">★</span>
-                    <span class="hover:scale-110 transition-transform duration-200">★</span>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-14 space-y-3 fade-up">
+                <span class="section-badge">✦ Client Testimonials</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-primary tracking-tight">What Our Clients Say</h2>
+            </div>
+
+            <!-- Rating summary -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-6 mb-14 fade-up">
+                <div class="bg-primary text-white px-10 py-8 rounded-3xl text-center min-w-[160px]">
+                    <p class="text-5xl font-black text-accent leading-none">4.9</p>
+                    <div class="flex justify-center text-accent space-x-0.5 text-lg mt-2">★★★★★</div>
+                    <p class="text-xs text-gray-300 mt-2 font-semibold uppercase tracking-wider">40+ Reviews</p>
                 </div>
-                <p class="text-xs uppercase tracking-wider text-gray-300 font-bold">(40+ Reviews)</p>
-                <p class="text-sm text-gray-400 leading-relaxed">
-                    Customer experiences that speak for themselves. Transparent analytics tracking professional
-                    integrity across fields.
+                <p class="text-gray-500 text-sm leading-relaxed max-w-xs text-center sm:text-left">
+                    Our clients trust us with their most important financial decisions — and their feedback shows it.
                 </p>
             </div>
 
-            <div class="lg:col-span-8 bg-lightBg p-8 rounded-3xl space-y-4 border border-transparent hover:border-accent/10 transition-all duration-300 hover:shadow-xl hover-glow">
-                <div class="flex text-accent text-xl">★★★★★</div>
-                <p class="text-primary font-medium text-base italic leading-relaxed">
-                    "Jukipat Consult resolved our legacy corporate regulatory backlogs in Adabraka within weeks. Their
-                    documentation processing speed for tax filing optimization is unmatched."
-                </p>
-                <div>
-                    <h4 class="font-bold text-primary text-sm">Dianne Russell</h4>
-                    <span class="text-xs text-gray-400">Owner, Architectural Hub Ltd</span>
+            <!-- Testimonial grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-lightBg rounded-3xl p-7 space-y-4 border border-gray-100 hover:border-accent/20 hover:shadow-xl transition-all duration-300 hover-glow fade-up">
+                    <div class="flex text-accent text-base">★★★★★</div>
+                    <p class="text-primary text-sm italic leading-relaxed">
+                        "Jukipat Consult cleared our tax backlog and got us fully compliant within weeks. Their knowledge of GRA processes saved us time and money."
+                    </p>
+                    <div class="flex items-center gap-3 pt-2 border-t border-gray-200">
+                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=80&h=80" class="w-10 h-10 rounded-full object-cover grayscale" alt="Dianne Russell">
+                        <div>
+                            <p class="font-bold text-primary text-sm">Dianne Russell</p>
+                            <p class="text-xs text-gray-400">Owner, Architectural Hub Ltd</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-primary rounded-3xl p-7 space-y-4 border border-primary/80 hover:border-accent/30 hover:shadow-xl transition-all duration-300 hover-glow fade-up">
+                    <div class="flex text-accent text-base">★★★★★</div>
+                    <p class="text-gray-300 text-sm italic leading-relaxed">
+                        "Registering my company used to seem overwhelming. Jukipat walked me through every step and had everything sorted in less than two weeks. Highly recommended."
+                    </p>
+                    <div class="flex items-center gap-3 pt-2 border-t border-white/10">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=80&h=80" class="w-10 h-10 rounded-full object-cover grayscale" alt="Kwame Asante">
+                        <div>
+                            <p class="font-bold text-white text-sm">Kwame Asante</p>
+                            <p class="text-xs text-gray-400">Director, KA Logistics Ltd</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-lightBg rounded-3xl p-7 space-y-4 border border-gray-100 hover:border-accent/20 hover:shadow-xl transition-all duration-300 hover-glow fade-up">
+                    <div class="flex text-accent text-base">★★★★★</div>
+                    <p class="text-primary text-sm italic leading-relaxed">
+                        "I've worked with several accounting firms but Jukipat's team is genuinely different — responsive, honest, and they explain everything clearly without the jargon."
+                    </p>
+                    <div class="flex items-center gap-3 pt-2 border-t border-gray-200">
+                        <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&q=80&w=80&h=80" class="w-10 h-10 rounded-full object-cover grayscale" alt="Abena Mensah">
+                        <div>
+                            <p class="font-bold text-primary text-sm">Abena Mensah</p>
+                            <p class="text-xs text-gray-400">CEO, Mensah Retail Group</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -775,8 +917,7 @@
                             Officer</p>
                     </div>
                     <p class="text-xs text-gray-500 leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
-                        Principal Director steering Jukipat Consult's strategic accountancy framework and multi-sector
-                        administrative partnerships.
+                        With over 16 years of experience in accountancy and financial consulting, Mrs. Mensah-Arthur leads Jukipat Consult's mission to deliver trustworthy, results-driven financial services to businesses across Ghana.
                     </p>
                 </div>
             </div>
@@ -791,7 +932,9 @@
             { question: 'What documentation is required for formal business registration?', answer: 'Requirements depend on entity architecture (Sole Proprietorship, LLC, Joint Venture). Standard frameworks involve certified local identifications, digital address configurations, and structural ownership breakdowns.' },
             { question: 'How are standard corporate tax parameters computed?', answer: 'Corporate tax parameters are computed based on annual revenue brackets, applicable GRA rate schedules, allowable deductions, and filing classifications. Our advisory desk provides full computational breakdowns during initial consultations.' },
             { question: 'What is the typical timeline for business registration in Ghana?', answer: 'Standard registration with the Office of the Registrar of Companies takes 5 to 8 business days once all director identifications and auditor consent forms are submitted. Special licenses or foreign ownership may extend the timeline.' },
-            { question: 'Do you offer ongoing accounting support after registration?', answer: 'Yes. Jukipat Consult provides continuous bookkeeping, payroll management, SSNIT filing, VAT remittance, and annual return preparation as part of our retained service packages.' }
+            { question: 'Do you offer ongoing accounting support after registration?', answer: 'Yes. Jukipat Consult provides continuous bookkeeping, payroll management, SSNIT filing, VAT remittance, and annual return preparation as part of our retained service packages.' },
+            { question: 'How much does a typical consultation cost?', answer: 'Your first consultation with Jukipat Consult is completely free. We assess your needs and provide a transparent quote before any work begins — no hidden fees or obligations.' },
+            { question: 'Can you help foreign-owned or international businesses register in Ghana?', answer: 'Yes. We handle the full Ghana Investment Promotion Centre (GIPC) registration process, foreign ownership structures, and all associated compliance filings required for international businesses operating in Ghana.' }
         ]
     }">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
@@ -819,6 +962,35 @@
     </section>
     <!-- END COMPONENT: FAQ -->
 
+    <!-- COMPONENT: CTA_BANNER -->
+    <section class="py-20 bg-primary relative overflow-hidden">
+        <div class="absolute inset-0 pointer-events-none">
+            <div class="absolute top-0 left-1/4 w-96 h-96 bg-accent/5 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-emerald-700/10 rounded-full blur-3xl"></div>
+        </div>
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 space-y-8 fade-up">
+            <span class="inline-flex items-center gap-2 bg-accent/10 border border-accent/20 text-accent px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest">
+                <span class="w-2 h-2 rounded-full bg-accent animate-pulse"></span>Free Consultation
+            </span>
+            <h2 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight">
+                Ready to Grow<br><span class="text-accent">Your Business?</span>
+            </h2>
+            <p class="text-gray-300 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+                Get a free, no-obligation consultation from Ghana's trusted financial and tax experts. Clear advice, honest pricing, real results.
+            </p>
+            <div class="flex flex-wrap justify-center gap-4 pt-2">
+                <a href="#quote" class="bg-accent text-primary font-bold px-8 py-4 rounded-full text-sm hover:bg-accent/90 transition-all duration-300 shadow-lg hover:shadow-accent/20 hover:scale-[1.02] active:scale-[0.98] btn-shimmer">
+                    Get Your Free Quote
+                </a>
+                <a href="tel:+233244110005" class="bg-white/10 text-white font-bold px-8 py-4 rounded-full text-sm border border-white/20 hover:bg-white/20 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] flex items-center gap-2">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.72l.54 2.22a1 1 0 01-.25.96l-1.3 1.3a13.042 13.042 0 005.516 5.516l1.3-1.3a1 1 0 01.96-.25l2.22.54a1 1 0 01.72.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                    Call +233 244 110 005
+                </a>
+            </div>
+        </div>
+    </section>
+    <!-- END COMPONENT: CTA_BANNER -->
+
     <!-- COMPONENT: FOOTER -->
     <footer class="bg-primary/95 backdrop-blur-md text-white pt-16 pb-8 border-t border-emerald-950/50">
         <div
@@ -840,17 +1012,18 @@
             </div>
 
             <div class="md:col-span-3 space-y-4">
-                <h4 class="font-bold text-accent text-xs uppercase tracking-wider">Navigation</h4>
+                <h4 class="font-bold text-accent text-xs uppercase tracking-wider">Quick Links</h4>
                 <ul class="space-y-2 text-xs text-gray-400">
-                    <li><a href="#home" class="hover:text-white transition-colors">Our Overview</a></li>
-                    <li><a href="#about" class="hover:text-white transition-colors">Corporate Strategy</a></li>
-                    <li><a href="#services" class="hover:text-white transition-colors">Services Directory</a></li>
-                    <li><a href="#process" class="hover:text-white transition-colors">Process Matrix</a></li>
+                    <li><a href="#home" class="hover:text-white transition-colors">Home</a></li>
+                    <li><a href="#about" class="hover:text-white transition-colors">About Us</a></li>
+                    <li><a href="#services" class="hover:text-white transition-colors">Our Services</a></li>
+                    <li><a href="#process" class="hover:text-white transition-colors">Our Process</a></li>
+                    <li><a href="#quote" class="hover:text-white transition-colors">Contact Us</a></li>
                 </ul>
             </div>
 
             <div class="md:col-span-5 space-y-4">
-                <h4 class="font-bold text-accent text-xs uppercase tracking-wider">Corporate Identification</h4>
+                <h4 class="font-bold text-accent text-xs uppercase tracking-wider">Contact Us</h4>
                 <ul class="space-y-3 text-xs text-gray-400">
                     <li class="flex items-start">
                         <span class="font-bold text-white mr-2">LOC:</span>

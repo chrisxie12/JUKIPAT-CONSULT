@@ -66,7 +66,7 @@
     </script>
 
     <!-- Favicon -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><polygon points='50,5 95,90 5,90' fill='%23122a1e'/><text y='85' x='30' font-size='60' font-weight='900' fill='%23b5f529' font-family='sans-serif' font-style='italic'>J</text></svg>">
+    <link rel="icon" href="logo.png" type="image/png">
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -282,18 +282,9 @@
     <nav
         class="sticky top-0 bg-white/95 backdrop-blur-md z-50 border-b border-gray-100 shadow-sm transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex justify-between items-center">
-            <div class="flex items-center space-x-3">
-                <div class="relative w-10 h-10 flex items-center justify-center">
-                    <div
-                        class="w-0 h-0 border-l-[20px] border-l-transparent border-r-[20px] border-r-transparent border-b-[36px] border-b-primary absolute bottom-0">
-                    </div>
-                    <span class="text-accent font-black text-xl z-10 pt-3 italic">J</span>
-                </div>
-                <div>
-                    <span class="text-xl font-black text-primary tracking-tight block">JUKIPAT</span>
-                    <span class="text-xs uppercase tracking-widest text-gray-400 font-bold -mt-1 block">Consult</span>
-                </div>
-            </div>
+            <a href="#home" class="flex items-center">
+                <img src="logo.png" alt="Jukipat Consult" class="h-14 w-auto object-contain">
+            </a>
             <div class="hidden md:flex items-center space-x-8 font-medium text-sm text-gray-700">
                 <a href="#home" class="text-primary font-bold border-b-2 border-accent pb-1 hover:scale-[1.05] transition-all duration-300">Home</a>
                 <a href="#about" class="hover:text-primary hover:scale-[1.05] transition-all duration-300">About Us</a>
@@ -520,21 +511,22 @@
                     All Services →</a>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8" x-data="{
+            <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6" x-data="{
                 services: [
-                    { img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=400', title: 'Accountancy Services', desc: 'Full bookkeeping, financial statement preparation, payroll management, and audit support — keeping your business financially sound year-round.', glass: 'glass-card', textColor: 'text-gray-300', linkColor: 'text-accent', linkWeight: 'font-bold' },
-                    { img: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80&w=400', title: 'Strategic Tax Services', desc: 'Smart tax planning, accurate GRA filing, VAT remittance, and professional representation with tax authorities — so you stay compliant and pay only what you owe.', glass: 'glass-card-accent text-primary', imgFilter: '', textColor: 'text-emerald-950 font-medium', linkColor: 'text-primary font-black', linkWeight: 'font-black' },
-                    { img: 'https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format&fit=crop&q=80&w=400', title: 'Registration of Business', desc: 'Fast, error-free company registration with the Registrar of Companies, licensing, regulatory filings, and complete business structure setup.', glass: 'glass-card', textColor: 'text-gray-300', linkColor: 'text-accent', linkWeight: 'font-bold' }
+                    { img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=400', title: 'Accountancy Services', desc: 'Full bookkeeping, financial statements, payroll, and audit support — keeping your finances accurate and compliant.', featured: false },
+                    { img: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&q=80&w=400', title: 'Consultancy', desc: 'Strategic business advice, operational planning, and growth-focused guidance from experts with 16+ years of experience.', featured: false },
+                    { img: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80&w=400', title: 'Tax Services', desc: 'Smart tax planning, accurate GRA filing, VAT remittance, and professional representation with tax authorities.', featured: true },
+                    { img: 'https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format&fit=crop&q=80&w=400', title: 'Business Registration', desc: 'Fast, error-free company registration, licensing, regulatory filings, and complete business structure setup.', featured: false }
                 ]
             }">
                 <template x-for="(s, i) in services" :key="i">
-                    <div :class="s.glass + ' p-8 rounded-3xl space-y-4 group hover-glow' + (i === 1 ? ' shadow-2xl shadow-accent/20' : '')">
+                    <div :class="(s.featured ? 'glass-card-accent text-primary shadow-2xl shadow-accent/20' : 'glass-card') + ' p-7 rounded-3xl space-y-4 group hover-glow'">
                         <div class="overflow-hidden rounded-2xl">
-                            <img :src="s.img" :class="'w-full h-40 object-cover transition-all duration-500 group-hover:scale-110' + (i !== 1 ? ' grayscale group-hover:grayscale-0' : '')" :alt="s.title">
+                            <img :src="s.img" :class="'w-full h-36 object-cover transition-all duration-500 group-hover:scale-110' + (!s.featured ? ' grayscale group-hover:grayscale-0' : '')" :alt="s.title">
                         </div>
-                        <h3 class="text-xl font-bold" :class="i === 1 ? 'font-black' : 'text-white'" x-text="s.title"></h3>
-                        <p :class="s.textColor + ' text-sm leading-relaxed'" x-text="s.desc"></p>
-                        <a href="#quote" :class="s.linkColor + ' text-xs ' + s.linkWeight + ' inline-flex items-center gap-2 group/link transition-all duration-300 hover:gap-3'">Learn more <svg class="w-3 h-3 transition-transform duration-300 group-hover/link:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg></a>
+                        <h3 class="text-lg font-bold" :class="s.featured ? 'text-primary font-black' : 'text-white'" x-text="s.title"></h3>
+                        <p :class="(s.featured ? 'text-emerald-950' : 'text-gray-300') + ' text-xs leading-relaxed'" x-text="s.desc"></p>
+                        <a href="#quote" :class="(s.featured ? 'text-primary font-black' : 'text-accent font-bold') + ' text-xs inline-flex items-center gap-2 group/link transition-all duration-300 hover:gap-3'">Learn more <svg class="w-3 h-3 transition-transform duration-300 group-hover/link:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg></a>
                     </div>
                 </template>
             </div>
@@ -790,6 +782,7 @@
                                 <option value="consultancy">Consultancy</option>
                                 <option value="tax">Tax Services</option>
                                 <option value="registration">Registration of Business</option>
+                                <option value="other">Other Accountancy Services</option>
                             </select>
                             <p x-show="errors.service" x-text="errors.service" class="error-text"></p>
                         </div>
@@ -997,13 +990,8 @@
             class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-12 gap-12 pb-12 border-b border-emerald-900/40 text-sm">
 
             <div class="md:col-span-4 space-y-4">
-                <div class="flex items-center space-x-3">
-                    <div class="relative w-8 h-8 flex items-center justify-center">
-                        <div
-                            class="w-0 h-0 border-l-[15px] border-l-transparent border-r-[15px] border-r-transparent border-b-[28px] border-b-accent absolute bottom-0">
-                        </div>
-                    </div>
-                    <span class="text-lg font-black tracking-wider">JUKIPAT CONSULT</span>
+                <div class="flex items-center">
+                    <img src="logo.png" alt="Jukipat Consult" class="h-16 w-auto object-contain bg-white rounded-xl p-2 shadow-md">
                 </div>
                 <p class="text-gray-400 text-xs leading-relaxed max-w-sm">
                     High-performance financial architecture, corporate tax planning, and strategic enterprise

@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- COMPONENT: HEAD -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jukipat Consult - Financial, Tax & Business Registration Experts</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#122a1e', accent: '#b5f529', darkAccent: '#0d1f16',
+                        lightBg: '#f4f7f5'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- COMPONENT: GLOBAL_STYLES -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* ── Keyframes ── */
+        @keyframes marquee {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* ── Marquee ── */
+        .animate-marquee {
+            display: flex;
+            width: max-content;
+            animation: marquee 40s linear infinite;
+            will-change: transform;
+            transform: translateZ(0);
+        }
+
+        /* ── Glassmorphism ── */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(16px) saturate(140%);
+            -webkit-backdrop-filter: blur(16px) saturate(140%);
+            border: 1px solid rgba(255, 255, 255, 0.10);
+        }
+
+        .glass-card-accent {
+            background: rgba(181, 245, 41, 0.10);
+            backdrop-filter: blur(16px) saturate(140%);
+            -webkit-backdrop-filter: blur(16px) saturate(140%);
+            border: 1px solid rgba(181, 245, 41, 0.20);
+        }
+
+        /* ── Hover Effects ── */
+        .hover-glow {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .hover-glow:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 20px 60px -12px rgba(0, 0, 0, 0.25);
+        }
+        .hover-glow:active {
+            transform: translateY(-1px) scale(0.98);
+        }
+
+        .btn-shimmer {
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-shimmer::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            background: linear-gradient(120deg, transparent 20%, rgba(255, 255, 255, 0.15) 50%, transparent 80%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+        }
+        .btn-shimmer:hover::before {
+            opacity: 1;
+        }
+
+        /* ── Form Validation ── */
+        .input-error {
+            border-color: #dc2626 !important;
+            box-shadow: 0 0 0 2px rgba(220, 38, 38, 0.15) !important;
+        }
+        .input-error:focus {
+            border-color: #dc2626 !important;
+            box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.25) !important;
+        }
+        .error-text {
+            color: #dc2626;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-top: 0.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+        .success-overlay {
+            background: rgba(18, 42, 30, 0.97);
+            backdrop-filter: blur(20px);
+        }
+
+        [x-cloak] { display: none !important; }
+    </style>
+    <!-- END COMPONENT: GLOBAL_STYLES -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.8/dist/cdn.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.14.8/dist/cdn.min.js"></script>
+</head>
+<!-- END COMPONENT: HEAD -->
+
+<body class="bg-white text-gray-800 overflow-x-hidden" x-data="{ mobileOpen: false }">
+
+    <!-- COMPONENT: TOP_BAR -->
+    <div class="bg-primary/90 backdrop-blur-md text-white text-xs py-2 px-4 hidden lg:block border-b border-emerald-950/30">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-6">
+                <span class="flex items-center hover:text-accent transition-colors duration-300"><svg class="w-3.5 h-3.5 mr-2 text-accent" fill="none"
+                        stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.72l.54 2.22a1 1 0 01-.25.96l-1.3 1.3a13.042 13.042 0 005.516 5.516l1.3-1.3a1 1 0 01.96-.25l2.22.54a1 1 0 01.72.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z">
+                        </path>
+                    </svg>+233 (0) 244 110 005 / +233 (0) 202 620 921</span>
+                <span class="flex items-center hover:text-accent transition-colors duration-300"><svg class="w-3.5 h-3.5 mr-2 text-accent" fill="none"
+                        stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                        </path>
+                    </svg>jukiconsult@gmail.com</span>
+                <span class="flex items-center hover:text-accent transition-colors duration-300"><svg class="w-3.5 h-3.5 mr-2 text-accent" fill="none"
+                        stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z">
+                        </path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                    </svg>C104/2 Farrar Avenue Adabraka, Accra</span>
+            </div>
+            <div class="bg-accent text-primary font-bold px-4 py-2 -my-2 flex items-center space-x-3 rounded-bl-md">
+                <a href="#" class="hover:opacity-100 hover:text-primary/80 transition-all duration-300">FB</a>
+                <a href="#" class="hover:opacity-100 hover:text-primary/80 transition-all duration-300">LN</a>
+                <a href="#" class="hover:opacity-100 hover:text-primary/80 transition-all duration-300">TW</a>
+                <a href="#" class="hover:opacity-100 hover:text-primary/80 transition-all duration-300">WA</a>
+            </div>
+        </div>
+    </div>
+    <!-- END COMPONENT: TOP_BAR -->
+
+    <!-- COMPONENT: NAV -->
+    <nav
+        class="sticky top-0 bg-white/95 backdrop-blur-md z-50 border-b border-gray-100 shadow-sm transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <div class="relative w-10 h-10 flex items-center justify-center">
+                    <div
+                        class="w-0 h-0 border-l-[20px] border-l-transparent border-r-[20px] border-r-transparent border-b-[36px] border-b-primary absolute bottom-0">
+                    </div>
+                    <span class="text-accent font-black text-xl z-10 pt-3 italic">J</span>
+                </div>
+                <div>
+                    <span class="text-xl font-black text-primary tracking-tight block">JUKIPAT</span>
+                    <span class="text-xs uppercase tracking-widest text-gray-400 font-bold -mt-1 block">Consult</span>
+                </div>
+            </div>
+            <div class="hidden md:flex items-center space-x-8 font-medium text-sm text-gray-700">
+                <a href="#home" class="text-primary font-bold border-b-2 border-accent pb-1 hover:scale-[1.05] transition-all duration-300">Home</a>
+                <a href="#about" class="hover:text-primary hover:scale-[1.05] transition-all duration-300">About Us</a>
+                <a href="#services" class="hover:text-primary hover:scale-[1.05] transition-all duration-300">Services</a>
+                <a href="#process" class="hover:text-primary hover:scale-[1.05] transition-all duration-300">Process</a>
+                <a href="#quote" class="hover:text-primary hover:scale-[1.05] transition-all duration-300">Contact</a>
+            </div>
+            <button @click="mobileOpen = !mobileOpen" class="md:hidden flex flex-col space-y-1 p-2 rounded-lg hover:bg-gray-100 transition-all duration-300 active:scale-95" aria-label="Toggle menu">
+                <span class="block w-6 h-0.5 bg-primary transition-transform duration-300" :class="{ 'rotate-45 translate-y-1.5': mobileOpen }"></span>
+                <span class="block w-6 h-0.5 bg-primary transition-opacity duration-300" :class="{ 'opacity-0': mobileOpen }"></span>
+                <span class="block w-6 h-0.5 bg-primary transition-transform duration-300" :class="{ '-rotate-45 -translate-y-1.5': mobileOpen }"></span>
+            </button>
+            <div>
+                <a href="#quote"
+                    class="bg-primary hover:bg-darkAccent text-white text-sm font-semibold px-6 py-3 rounded-full transition-all duration-300 shadow-md hover:shadow-lg hover:shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] btn-shimmer">Get
+                    A Free Quote</a>
+            </div>
+        </div>
+    </nav>
+    <!-- END COMPONENT: NAV -->
+
+    <!-- COMPONENT: MOBILE_MENU -->
+    <div class="fixed inset-0 bg-white/90 backdrop-blur-xl z-40 md:hidden transition-all duration-400" :class="{ 'translate-x-0': mobileOpen, 'translate-x-full': !mobileOpen }">
+        <div class="flex flex-col items-center justify-center h-full space-y-8 text-lg font-medium">
+            <a href="#home" @click="mobileOpen = false" class="text-primary font-bold border-b-2 border-accent pb-1 hover:scale-110 transition-all duration-300">Home</a>
+            <a href="#about" @click="mobileOpen = false" class="text-gray-700 hover:text-primary hover:scale-110 transition-all duration-300">About Us</a>
+            <a href="#services" @click="mobileOpen = false" class="text-gray-700 hover:text-primary hover:scale-110 transition-all duration-300">Services</a>
+            <a href="#process" @click="mobileOpen = false" class="text-gray-700 hover:text-primary hover:scale-110 transition-all duration-300">Process</a>
+            <a href="#quote" @click="mobileOpen = false" class="bg-primary text-white font-semibold px-8 py-3.5 rounded-full text-sm hover:shadow-lg hover:shadow-primary/20 hover:scale-105 active:scale-95 transition-all duration-300">Get A Free Quote</a>
+        </div>
+    </div>
+    <!-- END COMPONENT: MOBILE_MENU -->
+
+    <!-- COMPONENT: HERO -->
+    <section id="home" class="relative bg-lightBg py-16 lg:py-24 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div class="lg:col-span-7 space-y-6">
+                <div
+                    class="inline-flex items-center space-x-2 bg-emerald-50 text-primary px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider">
+                    <div class="w-2 h-2 rounded-full bg-accent animate-pulse"></div>
+                    <span>Elevate Your Brand Frameworks</span>
+                </div>
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-primary tracking-tight leading-tight">
+                    Empowering Your <br><span class="text-emerald-800">Success</span> with Digital & Tax Expertise
+                </h1>
+                <p class="text-gray-600 text-base sm:text-lg max-w-xl leading-relaxed">
+                    Streamline operational architecture, reduce liabilities, and structure growth with specialized
+                    solutions custom-tailored for ambitious modern businesses.
+                </p>
+                <div class="flex flex-wrap gap-4 pt-2">
+                    <a href="#services"
+                        class="bg-primary hover:bg-darkAccent text-accent font-bold px-8 py-4 rounded-full text-sm flex items-center transition-all duration-300 shadow-lg shadow-emerald-950/10 hover:shadow-xl hover:shadow-emerald-950/20 hover:scale-[1.02] active:scale-[0.98] btn-shimmer">
+                        Explore More <svg class="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                        </svg>
+                    </a>
+                    <a href="#about"
+                        class="bg-white hover:bg-white text-primary font-bold px-8 py-4 rounded-full text-sm border border-gray-200 hover:border-primary/20 transition-all duration-300 hover:shadow-lg hover:scale-[1.02] active:scale-[0.98]">
+                        View All Services
+                    </a>
+                </div>
+            </div>
+
+            <div class="lg:col-span-5 relative flex justify-center">
+                <div class="relative w-full max-w-md">
+                    <div class="absolute -top-8 -left-8 w-32 h-32 bg-accent/10 rounded-full blur-2xl"></div>
+                    <div class="absolute -bottom-8 -right-8 w-40 h-40 bg-emerald-800/10 rounded-full blur-2xl"></div>
+                    <div class="relative p-3 rounded-[40px] bg-white/30 backdrop-blur-sm border border-white/20 shadow-2xl">
+                        <div class="grid grid-cols-12 gap-4 items-end">
+                            <div class="col-span-5">
+                                <img src="https://images.unsplash.com/photo-1606857521015-7f9fcf423740?auto=format&fit=crop&q=80&w=400"
+                                    class="rounded-2xl shadow-lg grayscale hover:grayscale-0 hover:scale-105 transition-all duration-500"
+                                    alt="Consulting Office">
+                            </div>
+                            <div class="col-span-7 space-y-4">
+                                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=500"
+                                    class="rounded-2xl shadow-xl border-2 border-white/60 grayscale hover:grayscale-0 hover:scale-105 transition-all duration-500"
+                                    alt="Executive Meeting">
+                                <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&q=80&w=500"
+                                    class="rounded-2xl shadow-lg grayscale hover:grayscale-0 hover:scale-105 transition-all duration-500"
+                                    alt="Financial Planning">
+                            </div>
+                        </div>
+                        <div
+                            class="absolute -bottom-3 left-6 bg-primary text-white p-4 rounded-full w-24 h-24 flex items-center justify-center text-center font-bold text-[10px] tracking-widest uppercase border-4 border-accent animate-spin-slow shadow-2xl">
+                            ★ TRUSTED ★<br>EXPERT<br>SERVICE
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- END COMPONENT: HERO -->
+
+    <!-- COMPONENT: MARQUEE -->
+    <div class="bg-primary text-white py-4 border-y border-emerald-900 overflow-hidden">
+        <div class="animate-marquee whitespace-nowrap flex items-center uppercase text-xs tracking-widest font-black">
+            <div class="flex items-center shrink-0 space-x-12">
+                <span>Accountancy</span> <span class="text-accent text-lg">✦</span>
+                <span>Consultancy</span> <span class="text-accent text-lg">✦</span>
+                <span>Tax Services</span> <span class="text-accent text-lg">✦</span>
+                <span>Registration of Business</span> <span class="text-accent text-lg">✦</span>
+                <span>Other Accountancy Services</span> <span class="text-accent text-lg">✦</span>
+            </div>
+            <div class="flex items-center shrink-0 space-x-12">
+                <span>Accountancy</span> <span class="text-accent text-lg">✦</span>
+                <span>Consultancy</span> <span class="text-accent text-lg">✦</span>
+                <span>Tax Services</span> <span class="text-accent text-lg">✦</span>
+                <span>Registration of Business</span> <span class="text-accent text-lg">✦</span>
+                <span>Other Accountancy Services</span> <span class="text-accent text-lg">✦</span>
+            </div>
+        </div>
+    </div>
+    <!-- END COMPONENT: MARQUEE -->
+
+    <!-- COMPONENT: ABOUT -->
+    <section id="about" class="py-20 sm:py-28 bg-white relative overflow-hidden">
+        <div class="absolute inset-0 pointer-events-none">
+            <div class="absolute -top-40 -right-40 w-80 h-80 bg-accent/5 rounded-full blur-3xl"></div>
+            <div class="absolute -bottom-40 -left-40 w-96 h-96 bg-emerald-800/5 rounded-full blur-3xl"></div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+                <div class="grid grid-cols-2 gap-4 sm:gap-6 relative">
+                    <div class="absolute -inset-4 bg-gradient-to-br from-accent/20 to-emerald-800/10 rounded-[40px] blur-2xl"></div>
+                    <div class="relative overflow-hidden rounded-[28px] shadow-xl bg-white/40 backdrop-blur-sm border border-white/20">
+                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80&w=500"
+                            class="w-full h-72 sm:h-80 object-cover grayscale hover:grayscale-0 transition-all duration-700 ease-out hover:scale-105"
+                            alt="Corporate desk">
+                        <div class="absolute inset-0 bg-gradient-to-t from-emerald-950/20 to-transparent pointer-events-none"></div>
+                    </div>
+                    <div class="relative overflow-hidden rounded-[28px] shadow-xl bg-white/40 backdrop-blur-sm border border-white/20 mt-8 sm:mt-12">
+                        <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=500"
+                            class="w-full h-72 sm:h-80 object-cover grayscale hover:grayscale-0 transition-all duration-700 ease-out hover:scale-105"
+                            alt="Team strategy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-emerald-950/20 to-transparent pointer-events-none"></div>
+                    </div>
+                    <div class="absolute -bottom-4 -right-4 bg-accent rounded-2xl shadow-2xl p-4 sm:p-5 hidden sm:block border border-accent/50">
+                        <p class="text-primary font-black text-2xl sm:text-3xl leading-none">16+</p>
+                        <p class="text-primary/70 text-[10px] font-bold uppercase tracking-widest mt-1">Years of Excellence</p>
+                    </div>
+                </div>
+                <div class="space-y-7">
+                    <div class="inline-flex items-center gap-2 bg-emerald-50 border border-emerald-200/50 backdrop-blur-sm px-4 py-2 rounded-full">
+                        <span class="w-2 h-2 rounded-full bg-accent animate-pulse"></span>
+                        <span class="text-[11px] font-bold text-emerald-800 uppercase tracking-[0.15em]">✦ About Us</span>
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-primary tracking-tight leading-[1.1]">
+                        Empowering Your Success with <span class="text-emerald-800">Complete Corporate</span> Expertise
+                    </h2>
+                    <p class="text-gray-500 text-base sm:text-lg leading-[1.8] max-w-lg">
+                        Under the strategic operational leadership of our Chief Executive Officer, <strong class="text-primary font-semibold">Mrs. Juliana
+                            Mensah-Arthur</strong>, Jukipat Consult delivers high-fidelity compliance structures across
+                        Ghana and beyond. We synthesize operational accountancy with forward-thinking business strategy.
+                    </p>
+
+                    <div class="space-y-5 pt-3">
+                        <div class="group/progress">
+                            <div class="flex justify-between text-sm mb-1.5">
+                                <span class="font-bold text-primary">Marketing & Business Growth</span>
+                                <span class="font-bold text-emerald-800 group-hover/progress:text-accent transition-colors duration-500">85%</span>
+                            </div>
+                            <div class="w-full bg-gray-100/80 h-2.5 rounded-full overflow-hidden ring-1 ring-inset ring-gray-200/50">
+                                <div class="h-full rounded-full bg-gradient-to-r from-primary to-emerald-700 transition-all duration-1000 ease-out group-hover/progress:shadow-lg group-hover/progress:shadow-primary/20" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="group/progress">
+                            <div class="flex justify-between text-sm mb-1.5">
+                                <span class="font-bold text-primary">Creativity & Innovation</span>
+                                <span class="font-bold text-emerald-800 group-hover/progress:text-accent transition-colors duration-500">80%</span>
+                            </div>
+                            <div class="w-full bg-gray-100/80 h-2.5 rounded-full overflow-hidden ring-1 ring-inset ring-gray-200/50">
+                                <div class="h-full rounded-full bg-gradient-to-r from-primary to-emerald-700 transition-all duration-1000 ease-out group-hover/progress:shadow-lg group-hover/progress:shadow-primary/20" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        <div class="group/progress">
+                            <div class="flex justify-between text-sm mb-1.5">
+                                <span class="font-bold text-primary">Business & Financial Management</span>
+                                <span class="font-bold text-emerald-800 group-hover/progress:text-accent transition-colors duration-500">95%</span>
+                            </div>
+                            <div class="w-full bg-gray-100/80 h-2.5 rounded-full overflow-hidden ring-1 ring-inset ring-gray-200/50">
+                                <div class="h-full rounded-full bg-gradient-to-r from-primary to-emerald-700 transition-all duration-1000 ease-out group-hover/progress:shadow-lg group-hover/progress:shadow-primary/20" style="width: 95%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pt-4">
+                        <a href="#quote"
+                            class="group/btn inline-flex items-center gap-3 bg-primary hover:bg-darkAccent text-white font-semibold text-sm px-8 py-4 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-primary/20 hover:-translate-y-0.5 active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2">
+                            <span>About Us</span>
+                            <svg class="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 pt-16 sm:pt-20 mt-16 sm:mt-20 border-t border-gray-100" x-data="{
+                stats: [
+                    { number: '3k+', label: 'Successful<br>Projects' },
+                    { number: '200+', label: 'Expert<br>Team' },
+                    { number: '350+', label: 'Happy<br>Customers' },
+                    { number: '16+', label: 'Years Of<br>Experience' }
+                ]
+            }">
+                <template x-for="(stat, idx) in stats" :key="stat.number">
+                    <div class="group cursor-default rounded-2xl bg-white/60 backdrop-blur-sm border border-gray-100/80 p-5 sm:p-6 hover:bg-white hover:border-accent/20 hover:shadow-lg hover:shadow-accent/5 transition-all duration-400">
+                        <span class="text-3xl sm:text-4xl font-black text-primary block transition-all duration-400 group-hover:text-accent group-hover:scale-110 origin-left" x-text="stat.number"></span>
+                        <span class="text-[11px] font-semibold text-gray-400 uppercase tracking-wider block border-l-2 border-accent pl-3 mt-2 transition-all duration-400 group-hover:text-primary group-hover:border-l-4" x-html="stat.label"></span>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </section>
+    <!-- END COMPONENT: ABOUT -->
+
+    <!-- COMPONENT: SERVICES -->
+    <section id="services" class="py-20 bg-primary text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12">
+                <div class="space-y-3">
+                    <span class="text-xs font-bold text-accent uppercase tracking-widest block">✦ Our Services</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Boost Your Brand <br>with Our
+                        Expertise</h2>
+                </div>
+                <a href="#quote"
+                    class="bg-white text-primary hover:bg-white font-bold text-xs px-6 py-3 rounded-full mt-4 md:mt-0 shadow-md hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] transition-all duration-300">View
+                    All Services →</a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8" x-data="{
+                services: [
+                    { img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=400', title: 'Accountancy Services', desc: 'Statutory bookkeeping, auditing frameworks, financial statement preparation, and general organizational structure setup.', glass: 'glass-card', textColor: 'text-gray-300', linkColor: 'text-accent', linkWeight: 'font-bold' },
+                    { img: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80&w=400', title: 'Strategic Tax Services', desc: 'Corporate optimization frameworks, filing compliance architecture, and expert local authority representations.', glass: 'glass-card-accent text-primary', imgFilter: '', textColor: 'text-emerald-950 font-medium', linkColor: 'text-primary font-black', linkWeight: 'font-black' },
+                    { img: 'https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format&fit=crop&q=80&w=400', title: 'Registration of Business', desc: 'Seamless legal formations, licensing setup, regulatory compliance filings, and organizational onboarding modules.', glass: 'glass-card', textColor: 'text-gray-300', linkColor: 'text-accent', linkWeight: 'font-bold' }
+                ]
+            }">
+                <template x-for="(s, i) in services" :key="i">
+                    <div :class="s.glass + ' p-8 rounded-3xl space-y-4 group hover-glow' + (i === 1 ? ' shadow-2xl shadow-accent/20' : '')">
+                        <div class="overflow-hidden rounded-2xl">
+                            <img :src="s.img" :class="'w-full h-40 object-cover transition-all duration-500 group-hover:scale-110' + (i !== 1 ? ' grayscale group-hover:grayscale-0' : '')" :alt="s.title">
+                        </div>
+                        <h3 class="text-xl font-bold" :class="i === 1 ? 'font-black' : 'text-white'" x-text="s.title"></h3>
+                        <p :class="s.textColor + ' text-sm leading-relaxed'" x-text="s.desc"></p>
+                        <a href="#quote" :class="s.linkColor + ' text-xs ' + s.linkWeight + ' inline-flex items-center gap-2 group/link transition-all duration-300 hover:gap-3'">Learn more <svg class="w-3 h-3 transition-transform duration-300 group-hover/link:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg></a>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </section>
+    <!-- END COMPONENT: SERVICES -->
+
+    <!-- COMPONENT: WHY_CHOOSE_US -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
+                <span class="text-xs font-bold text-emerald-800 uppercase tracking-widest block">✦ Why Choose Us</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-primary tracking-tight">Why Our Clients Believe
+                    We’re Different</h2>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-5 relative">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=600"
+                            class="rounded-3xl shadow-xl grayscale" alt="Collaborative workshop">
+                        <div class="absolute -bottom-6 -right-6 bg-accent p-6 rounded-2xl shadow-xl hidden sm:block">
+                            <svg class="w-12 h-12 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                    d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z">
+                                </path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-7 p-1 rounded-3xl bg-gradient-to-br from-primary/95 to-darkAccent">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div class="glass-card text-white p-6 rounded-2xl space-y-2 hover-glow">
+                            <div
+                                class="w-9 h-9 rounded-full bg-accent text-primary flex items-center justify-center font-bold text-sm mb-3 transition-transform duration-300 group-hover:scale-110">
+                                ✓</div>
+                            <h4 class="font-bold text-base text-white">Certified Experts</h4>
+                            <p class="text-xs text-gray-400 leading-relaxed">Top tier accounting framework optimization
+                                under strict international metrics.</p>
+                        </div>
+                        <div class="glass-card text-white p-6 rounded-2xl space-y-2 hover-glow">
+                            <div
+                                class="w-9 h-9 rounded-full bg-accent text-primary flex items-center justify-center font-bold text-sm mb-3 transition-transform duration-300 group-hover:scale-110">
+                                ✓</div>
+                            <h4 class="font-bold text-base text-white">Proven Results</h4>
+                            <p class="text-xs text-gray-400 leading-relaxed">Documented records reducing overhead costs and
+                                optimizing resource pipelines.</p>
+                        </div>
+                        <div class="glass-card text-white p-6 rounded-2xl space-y-2 hover-glow">
+                            <div
+                                class="w-9 h-9 rounded-full bg-accent text-primary flex items-center justify-center font-bold text-sm mb-3 transition-transform duration-300 group-hover:scale-110">
+                                ✓</div>
+                            <h4 class="font-bold text-base text-white">Award Winning</h4>
+                            <p class="text-xs text-gray-400 leading-relaxed">Recognized advisory architecture maintaining
+                                high tier compliance data protocols.</p>
+                        </div>
+                        <div class="glass-card text-white p-6 rounded-2xl space-y-2 hover-glow">
+                            <div
+                                class="w-9 h-9 rounded-full bg-accent text-primary flex items-center justify-center font-bold text-sm mb-3 transition-transform duration-300 group-hover:scale-110">
+                                ✓</div>
+                            <h4 class="font-bold text-base text-white">Transparent Reporting</h4>
+                            <p class="text-xs text-gray-400 leading-relaxed">Consolidated balance sheets, live timelines,
+                                and open-door review setups.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- END COMPONENT: WHY_CHOOSE_US -->
+
+    <!-- COMPONENT: PROCESS -->
+    <section id="process" class="py-20 bg-lightBg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
+                <span class="text-xs font-bold text-emerald-800 uppercase tracking-widest block">✦ Our Work
+                    Process</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-primary tracking-tight">Step-by-Step to Your Growth
+                </h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div
+                    class="bg-white rounded-3xl p-8 relative shadow-sm border border-gray-100 flex flex-col justify-between group hover-glow hover:border-accent/20 transition-all duration-300">
+                    <div class="space-y-4">
+                        <span
+                            class="text-5xl font-black text-gray-100 group-hover:text-accent/60 transition-all duration-300 block">01</span>
+                        <h3 class="text-lg font-bold text-primary group-hover:text-accent transition-colors duration-300">Discover & Strategize</h3>
+                        <p class="text-gray-500 text-xs leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
+                            We catalog financial metrics, corporate history, and compliance criteria to isolate dynamic
+                            growth paths.
+                        </p>
+                    </div>
+                    <div class="mt-6 bg-gray-100 h-2 w-full rounded-full overflow-hidden">
+                        <div class="bg-accent h-full w-1/3 rounded-full transition-all duration-700 group-hover:w-full"></div>
+                    </div>
+                </div>
+                <div
+                    class="bg-white rounded-3xl p-8 relative shadow-sm border border-gray-100 flex flex-col justify-between group hover-glow hover:border-accent/20 transition-all duration-300">
+                    <div class="space-y-4">
+                        <span
+                            class="text-5xl font-black text-gray-100 group-hover:text-accent/60 transition-all duration-300 block">02</span>
+                        <h3 class="text-lg font-bold text-primary group-hover:text-accent transition-colors duration-300">Execute & Optimize</h3>
+                        <p class="text-gray-500 text-xs leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
+                            Our specialists deploy strategic legal bookkeeping transformations and realign tax
+                            obligations.
+                        </p>
+                    </div>
+                    <div class="mt-6 bg-gray-100 h-2 w-full rounded-full overflow-hidden">
+                        <div class="bg-accent h-full w-2/3 rounded-full transition-all duration-700 group-hover:w-full"></div>
+                    </div>
+                </div>
+                <div
+                    class="bg-white rounded-3xl p-8 relative shadow-sm border border-gray-100 flex flex-col justify-between group hover-glow hover:border-accent/20 transition-all duration-300">
+                    <div class="space-y-4">
+                        <span
+                            class="text-5xl font-black text-gray-100 group-hover:text-accent/60 transition-all duration-300 block">03</span>
+                        <h3 class="text-lg font-bold text-primary group-hover:text-accent transition-colors duration-300">Analyze & Grow</h3>
+                        <p class="text-gray-500 text-xs leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
+                            Continuous diagnostic checks ensure structured compliance scaling alongside ongoing
+                            expansion profiles.
+                        </p>
+                    </div>
+                    <div class="mt-6 bg-gray-100 h-2 w-full rounded-full overflow-hidden">
+                        <div class="bg-accent h-full w-full rounded-full transition-all duration-700"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- END COMPONENT: PROCESS -->
+
+    <!-- COMPONENT: OUR_WORK -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
+                <span class="text-xs font-bold text-emerald-800 uppercase tracking-widest block">✦ Our Work</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-primary tracking-tight">Work That Drives Results
+                </h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-lightBg rounded-3xl p-6 space-y-4 relative group overflow-hidden hover-glow hover:border-accent/10 border border-transparent">
+                    <img src="https://images.unsplash.com/photo-1542744094-3a31f103e35f?auto=format&fit=crop&q=80&w=600"
+                        class="w-full h-64 object-cover rounded-2xl grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500"
+                        alt="SME Tax strategy">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <span
+                                class="text-[10px] uppercase font-bold tracking-wider bg-emerald-100 text-primary px-2.5 py-1 rounded-full transition-all duration-300 group-hover:bg-accent group-hover:text-primary">Tax
+                                Advisory</span>
+                            <h3 class="text-lg font-bold text-primary mt-2 group-hover:text-accent transition-colors duration-300">SME Financial Restructuring Case</h3>
+                        </div>
+                        <a href="#quote"
+                            class="w-10 h-10 rounded-full bg-accent text-primary flex items-center justify-center font-bold hover:scale-110 hover:shadow-lg hover:shadow-accent/30 active:scale-95 transition-all duration-300">→</a>
+                    </div>
+                </div>
+                <div class="bg-lightBg rounded-3xl p-6 space-y-4 relative group overflow-hidden hover-glow hover:border-accent/10 border border-transparent">
+                    <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&q=80&w=600"
+                        class="w-full h-64 object-cover rounded-2xl grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500"
+                        alt="Corporate Onboarding">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <span
+                                class="text-[10px] uppercase font-bold tracking-wider bg-emerald-100 text-primary px-2.5 py-1 rounded-full transition-all duration-300 group-hover:bg-accent group-hover:text-primary">Registration</span>
+                            <h3 class="text-lg font-bold text-primary mt-2 group-hover:text-accent transition-colors duration-300">End-to-End Corporate Legal Setup</h3>
+                        </div>
+                        <a href="#quote"
+                            class="w-10 h-10 rounded-full bg-accent text-primary flex items-center justify-center font-bold hover:scale-110 hover:shadow-lg hover:shadow-accent/30 active:scale-95 transition-all duration-300">→</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- END COMPONENT: OUR_WORK -->
+
+    <!-- COMPONENT: CONTACT -->
+    <section id="quote" class="py-20 bg-lightBg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div
+                class="bg-white/70 backdrop-blur-xl rounded-[40px] shadow-xl overflow-hidden grid grid-cols-1 lg:grid-cols-12 gap-12 p-8 sm:p-12 items-center border border-white/50">
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="space-y-2">
+                        <span class="text-xs font-bold text-emerald-800 uppercase tracking-widest block">✦ Contact
+                            Us</span>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-primary tracking-tight">Get Your Free Quote
+                            Today!</h2>
+                    </div>
+
+                    <form x-data="{
+                        formData: { name: '', email: '', phone: '', service: '', message: '' },
+                        errors: {},
+                        submitted: false,
+                        validateField(field) {
+                            const val = (this.formData[field] || '').trim();
+                            if (field === 'name' && !val) return 'Name is required';
+                            if (field === 'email' && !val) return 'Email is required';
+                            if (field === 'email' && val && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)) return 'Enter a valid email';
+                            if (field === 'phone' && !val) return 'Phone is required';
+                            if (field === 'phone' && val && !/^[\d\s\+\-\(\)]{7,20}$/.test(val)) return 'Enter a valid phone number';
+                            if (field === 'service' && !val) return 'Please select a service';
+                            return '';
+                        },
+                        validateAll() {
+                            this.errors = {};
+                            const fields = ['name', 'email', 'phone', 'service'];
+                            let valid = true;
+                            fields.forEach(f => {
+                                const err = this.validateField(f);
+                                if (err) { this.errors[f] = err; valid = false; }
+                            });
+                            return valid;
+                        },
+                        submitForm() {
+                            if (!this.validateAll()) return;
+                            this.submitted = true;
+                        }
+                    }" @submit.prevent="submitForm" class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
+                        <div class="space-y-1">
+                            <label class="font-bold text-xs text-primary uppercase">Your Name *</label>
+                            <input type="text" placeholder="Ex. John Doe"
+                                x-model="formData.name"
+                                @input="errors.name = ''; delete errors.name"
+                                @blur="errors.name = validateField('name')"
+                                :class="{ 'input-error': errors.name }"
+                                class="w-full bg-white/70 border border-gray-200 rounded-xl px-4 py-3.5 focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 focus:shadow-lg transition-all duration-300 hover:border-primary/30">
+                            <p x-show="errors.name" x-text="errors.name" class="error-text"></p>
+                        </div>
+                        <div class="space-y-1">
+                            <label class="font-bold text-xs text-primary uppercase">Email *</label>
+                            <input type="email" placeholder="example@gmail.com"
+                                x-model="formData.email"
+                                @input="errors.email = ''; delete errors.email"
+                                @blur="errors.email = validateField('email')"
+                                :class="{ 'input-error': errors.email }"
+                                class="w-full bg-white/70 border border-gray-200 rounded-xl px-4 py-3.5 focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 focus:shadow-lg transition-all duration-300 hover:border-primary/30">
+                            <p x-show="errors.email" x-text="errors.email" class="error-text"></p>
+                        </div>
+                        <div class="space-y-1">
+                            <label class="font-bold text-xs text-primary uppercase">Phone *</label>
+                            <input type="tel" placeholder="Enter Phone Number"
+                                x-model="formData.phone"
+                                @input="errors.phone = ''; delete errors.phone"
+                                @blur="errors.phone = validateField('phone')"
+                                :class="{ 'input-error': errors.phone }"
+                                class="w-full bg-white/70 border border-gray-200 rounded-xl px-4 py-3.5 focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 focus:shadow-lg transition-all duration-300 hover:border-primary/30">
+                            <p x-show="errors.phone" x-text="errors.phone" class="error-text"></p>
+                        </div>
+                        <div class="space-y-1">
+                            <label class="font-bold text-xs text-primary uppercase">Service Interested In *</label>
+                            <select
+                                x-model="formData.service"
+                                @change="errors.service = ''; delete errors.service"
+                                @blur="errors.service = validateField('service')"
+                                :class="{ 'input-error': errors.service }"
+                                class="w-full bg-white/70 border border-gray-200 rounded-xl px-4 py-3.5 focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 focus:shadow-lg transition-all duration-300 hover:border-primary/30">
+                                <option value="">Select Service</option>
+                                <option value="accountancy">Accountancy Services</option>
+                                <option value="consultancy">Consultancy</option>
+                                <option value="tax">Tax Services</option>
+                                <option value="registration">Registration of Business</option>
+                            </select>
+                            <p x-show="errors.service" x-text="errors.service" class="error-text"></p>
+                        </div>
+                        <div class="sm:col-span-2 space-y-1">
+                            <label class="font-bold text-xs text-primary uppercase">Your Message</label>
+                            <textarea rows="4" placeholder="Enter details..."
+                                x-model="formData.message"
+                                class="w-full bg-white/70 border border-gray-200 rounded-xl px-4 py-3.5 focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 focus:shadow-lg transition-all duration-300 hover:border-primary/30"></textarea>
+                        </div>
+                        <div class="sm:col-span-2 pt-2">
+                            <button type="submit"
+                                class="bg-primary hover:bg-darkAccent text-accent font-bold px-8 py-4 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] btn-shimmer">Send
+                                Message</button>
+                        </div>
+
+                        <div x-show="submitted" x-transition:enter="transition-all duration-500 ease-out" x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100" x-cloak class="sm:col-span-2 fixed inset-0 z-50 flex items-center justify-center p-4 success-overlay" @click.self="submitted = false">
+                            <div class="bg-white rounded-3xl p-8 sm:p-12 text-center max-w-md w-full space-y-4 shadow-2xl">
+                                <div class="w-16 h-16 rounded-full bg-accent flex items-center justify-center mx-auto text-3xl font-black text-primary animate-bounce">✓</div>
+                                <h3 class="text-2xl font-extrabold text-primary">Thank You!</h3>
+                                <p class="text-gray-500 text-sm leading-relaxed">Your message has been received. Our team will reach out within 24 hours to discuss your needs.</p>
+                                <button @click="submitted = false; formData = { name: '', email: '', phone: '', service: '', message: '' }; errors = {}" class="bg-primary hover:bg-darkAccent text-white font-semibold px-6 py-3 rounded-xl text-sm transition-all duration-300 mt-4">Send Another Message</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="lg:col-span-5 h-full hidden lg:block">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=600"
+                        class="w-full h-full object-cover rounded-[32px] grayscale min-h-[450px]"
+                        alt="Accountant executive">
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- END COMPONENT: CONTACT -->
+
+    <!-- COMPONENT: TESTIMONIALS -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div class="lg:col-span-4 bg-primary/90 backdrop-blur-md text-white p-8 rounded-3xl space-y-4 border border-white/10 hover-glow">
+                <h3 class="text-4xl font-black text-accent">4.9</h3>
+                <div class="flex text-accent space-x-1 text-xl">
+                    <span class="hover:scale-110 transition-transform duration-200">★</span>
+                    <span class="hover:scale-110 transition-transform duration-200">★</span>
+                    <span class="hover:scale-110 transition-transform duration-200">★</span>
+                    <span class="hover:scale-110 transition-transform duration-200">★</span>
+                    <span class="hover:scale-110 transition-transform duration-200">★</span>
+                </div>
+                <p class="text-xs uppercase tracking-wider text-gray-300 font-bold">(40+ Reviews)</p>
+                <p class="text-sm text-gray-400 leading-relaxed">
+                    Customer experiences that speak for themselves. Transparent analytics tracking professional
+                    integrity across fields.
+                </p>
+            </div>
+
+            <div class="lg:col-span-8 bg-lightBg p-8 rounded-3xl space-y-4 border border-transparent hover:border-accent/10 transition-all duration-300 hover:shadow-xl hover-glow">
+                <div class="flex text-accent text-xl">★★★★★</div>
+                <p class="text-primary font-medium text-base italic leading-relaxed">
+                    "Jukipat Consult resolved our legacy corporate regulatory backlogs in Adabraka within weeks. Their
+                    documentation processing speed for tax filing optimization is unmatched."
+                </p>
+                <div>
+                    <h4 class="font-bold text-primary text-sm">Dianne Russell</h4>
+                    <span class="text-xs text-gray-400">Owner, Architectural Hub Ltd</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- END COMPONENT: TESTIMONIALS -->
+
+    <!-- COMPONENT: LEADERSHIP -->
+    <section class="py-20 bg-lightBg border-t border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
+                <span class="text-xs font-bold text-emerald-800 uppercase tracking-widest block">✦ Our Leadership
+                    Team</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-primary tracking-tight">Meet Our Lead Advisory</h2>
+            </div>
+
+            <div class="flex justify-center">
+                <div
+                    class="bg-white rounded-3xl p-6 shadow-md border border-gray-100 max-w-sm w-full text-center space-y-4 group hover-glow hover:border-accent/20">
+                    <div class="relative overflow-hidden rounded-2xl bg-gray-100">
+                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=400"
+                            class="w-full h-72 object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700"
+                            alt="Mrs. Juliana Mensah-Arthur">
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-primary group-hover:text-accent transition-colors duration-300">Mrs. Juliana Mensah-Arthur</h3>
+                        <p class="text-xs font-semibold text-emerald-800 uppercase tracking-wider mt-1 transition-colors duration-300 group-hover:text-accent">Chief Executive
+                            Officer</p>
+                    </div>
+                    <p class="text-xs text-gray-500 leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
+                        Principal Director steering Jukipat Consult's strategic accountancy framework and multi-sector
+                        administrative partnerships.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- END COMPONENT: LEADERSHIP -->
+
+    <!-- COMPONENT: FAQ -->
+    <section class="py-20 bg-white" x-data="{
+        activeFaq: 0,
+        faqItems: [
+            { question: 'What documentation is required for formal business registration?', answer: 'Requirements depend on entity architecture (Sole Proprietorship, LLC, Joint Venture). Standard frameworks involve certified local identifications, digital address configurations, and structural ownership breakdowns.' },
+            { question: 'How are standard corporate tax parameters computed?', answer: 'Corporate tax parameters are computed based on annual revenue brackets, applicable GRA rate schedules, allowable deductions, and filing classifications. Our advisory desk provides full computational breakdowns during initial consultations.' },
+            { question: 'What is the typical timeline for business registration in Ghana?', answer: 'Standard registration with the Office of the Registrar of Companies takes 5 to 8 business days once all director identifications and auditor consent forms are submitted. Special licenses or foreign ownership may extend the timeline.' },
+            { question: 'Do you offer ongoing accounting support after registration?', answer: 'Yes. Jukipat Consult provides continuous bookkeeping, payroll management, SSNIT filing, VAT remittance, and annual return preparation as part of our retained service packages.' }
+        ]
+    }">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+            <div class="text-center space-y-3">
+                <span class="text-xs font-bold text-emerald-800 uppercase tracking-widest block">✦ FAQs</span>
+                <h2 class="text-3xl font-extrabold text-primary tracking-tight">Question? Look Here.</h2>
+            </div>
+
+            <div class="space-y-4">
+                <template x-for="(item, index) in faqItems" :key="index">
+                    <div class="bg-lightBg rounded-2xl border border-gray-100 overflow-hidden transition-all duration-300 hover:shadow-md hover:border-accent/20" :class="{ 'opacity-80': activeFaq !== index }">
+                        <div class="p-6 cursor-pointer select-none transition-all duration-300" :class="{ 'bg-accent/5': activeFaq === index }" @click="activeFaq = activeFaq === index ? null : index">
+                            <h4 class="font-bold text-primary text-sm flex justify-between items-center">
+                                <span x-text="item.question" class="transition-colors duration-300" :class="{ 'text-accent': activeFaq === index }"></span>
+                                <span class="text-lg shrink-0 ml-4 transition-all duration-300" :class="activeFaq === index ? 'text-accent rotate-180' : 'text-emerald-800'" x-text="activeFaq === index ? '−' : '+'"></span>
+                            </h4>
+                        </div>
+                        <div x-show="activeFaq === index" x-collapse.duration.300ms>
+                            <p class="text-xs text-gray-500 px-6 pb-6 leading-relaxed" x-text="item.answer"></p>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </section>
+    <!-- END COMPONENT: FAQ -->
+
+    <!-- COMPONENT: FOOTER -->
+    <footer class="bg-primary/95 backdrop-blur-md text-white pt-16 pb-8 border-t border-emerald-950/50">
+        <div
+            class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-12 gap-12 pb-12 border-b border-emerald-900/40 text-sm">
+
+            <div class="md:col-span-4 space-y-4">
+                <div class="flex items-center space-x-3">
+                    <div class="relative w-8 h-8 flex items-center justify-center">
+                        <div
+                            class="w-0 h-0 border-l-[15px] border-l-transparent border-r-[15px] border-r-transparent border-b-[28px] border-b-accent absolute bottom-0">
+                        </div>
+                    </div>
+                    <span class="text-lg font-black tracking-wider">JUKIPAT CONSULT</span>
+                </div>
+                <p class="text-gray-400 text-xs leading-relaxed max-w-sm">
+                    High-performance financial architecture, corporate tax planning, and strategic enterprise
+                    operational registration across regional metrics.
+                </p>
+            </div>
+
+            <div class="md:col-span-3 space-y-4">
+                <h4 class="font-bold text-accent text-xs uppercase tracking-wider">Navigation</h4>
+                <ul class="space-y-2 text-xs text-gray-400">
+                    <li><a href="#home" class="hover:text-white transition-colors">Our Overview</a></li>
+                    <li><a href="#about" class="hover:text-white transition-colors">Corporate Strategy</a></li>
+                    <li><a href="#services" class="hover:text-white transition-colors">Services Directory</a></li>
+                    <li><a href="#process" class="hover:text-white transition-colors">Process Matrix</a></li>
+                </ul>
+            </div>
+
+            <div class="md:col-span-5 space-y-4">
+                <h4 class="font-bold text-accent text-xs uppercase tracking-wider">Corporate Identification</h4>
+                <ul class="space-y-3 text-xs text-gray-400">
+                    <li class="flex items-start">
+                        <span class="font-bold text-white mr-2">LOC:</span>
+                        <span>C104/2 Farrar Avenue Adabraka, Accra, Ghana</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="font-bold text-white mr-2">ADD:</span>
+                        <span>P. O. Box KN 5320, Kaneshie - Accra</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="font-bold text-white mr-2">TEL:</span>
+                        <span>+233 (0) 244 110 005 <br> +233 (0) 202 620 921</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="font-bold text-white mr-2">EML:</span>
+                        <span>jukiconsult@gmail.com / jmanther@gmail.com</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div
+            class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 flex flex-col sm:flex-row justify-between items-center text-xs text-gray-500 space-y-4 sm:space-y-0">
+            <span>Copyright © 2026 Jukipat Consult. All Rights Reserved.</span>
+            <div class="flex space-x-6">
+                <a href="#" class="hover:text-gray-300">User Terms & Conditions</a>
+                <a href="#" class="hover:text-gray-300">Privacy Policy</a>
+            </div>
+        </div>
+    </footer>
+    <!-- END COMPONENT: FOOTER -->
+
+</body>
+
+</html>
